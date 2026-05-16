@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-turbopack)",
+      "Bash(mkdir -p ../tmp_risestrong_backup)",
+      "Bash(mv APP_SPEC.md CLAUDE.md TASKS.md ../tmp_risestrong_backup/)",
+      "Bash(mv C:/Users/rotem/MyProjects/tmp_risestrong_backup/* C:/Users/rotem/MyProjects/risestrong/)",
+      "Bash(rmdir C:/Users/rotem/MyProjects/tmp_risestrong_backup)",
+      "Bash(npm install *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  }
+}
