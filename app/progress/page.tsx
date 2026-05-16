@@ -355,13 +355,16 @@ function CalendarGrid({
   progressMap: Record<string, DayProgress>
 }) {
   const todayISO = toISODate(today)
+  // Rotate day-letter headers so column 0 matches the actual day startDate falls on
+  const startDow = startDate.getDay() // 0=Sun, 1=Mon, ...
+  const headers = Array.from({ length: 7 }, (_, i) => DAY_LABELS[(startDow + i) % 7])
 
   return (
     <div className="space-y-1">
-      {/* Column headers */}
+      {/* Column headers — aligned to startDate's day of week */}
       <div className="flex items-center gap-1.5 mb-1">
         <span className="w-7 shrink-0" />
-        {DAY_LABELS.map((l, i) => (
+        {headers.map((l, i) => (
           <span key={i} className="w-6 text-center text-xs text-gray-400 shrink-0">{l}</span>
         ))}
       </div>
