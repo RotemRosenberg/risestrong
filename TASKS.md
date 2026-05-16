@@ -196,8 +196,8 @@ Let's start by scaffolding the project.
    npm install -D @types/canvas-confetti
 
 3. Create .env.local with this content (I will fill in the values):
-   NEXT_PUBLIC_SUPABASE_URL=PASTE_YOUR_URL_HERE
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=PASTE_YOUR_KEY_HERE
+   NEXT_PUBLIC_SUPABASE_URL=https://jsgwgcvsyfyziwogqwqy.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzZ3dnY3ZzeWZ5eml3b2dxd3F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5Mjc5MDksImV4cCI6MjA5NDUwMzkwOX0.QO0nLskvbihMlwDpTrc4OPTWC8zwn7A2yrsppLlF36U
 
 4. Make sure .env*.local is in .gitignore (add it if not already there)
 
