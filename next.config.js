@@ -4,5 +4,6 @@ const withPWA = require("next-pwa")({
 });
 
 module.exports = withPWA({
-  // no additional config
+  // Acknowledge Turbopack for dev; next-pwa's webpack config runs in production builds only
+  turbopack: {},
 });
