@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "RiseStrong",
   description: "12-week calisthenics program",
   manifest: "/manifest.json",
+  icons: {
+    apple: [{ url: "/icon-192.png", sizes: "192x192" }],
+  },
 };
 
 export const viewport: Viewport = {

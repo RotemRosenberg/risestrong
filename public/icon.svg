@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded square background — iOS-style corner radius ~22.5% -->
+  <rect width="512" height="512" rx="115" fill="#2E7D32"/>
+
+  <!-- Pull-up bar (horizontal rod) -->
+  <rect x="80" y="128" width="352" height="36" rx="18" fill="white"/>
+
+  <!-- Left vertical support -->
+  <rect x="96" y="128" width="28" height="90" rx="14" fill="white"/>
+
+  <!-- Right vertical support -->
+  <rect x="388" y="128" width="28" height="90" rx="14" fill="white"/>
+
+  <!-- Hanging figure — left arm -->
+  <rect x="213" y="164" width="24" height="72" rx="12" fill="white" transform="rotate(-8 225 200)"/>
+
+  <!-- Hanging figure — right arm -->
+  <rect x="275" y="164" width="24" height="72" rx="12" fill="white" transform="rotate(8 287 200)"/>
+
+  <!-- Head -->
+  <circle cx="256" cy="258" r="34" fill="white"/>
+
+  <!-- Body -->
+  <rect x="228" y="288" width="56" height="88" rx="28" fill="white"/>
+
+  <!-- Left leg -->
+  <rect x="224" y="356" width="22" height="64" rx="11" fill="white" transform="rotate(-10 235 388)"/>
+
+  <!-- Right leg -->
+  <rect x="266" y="356" width="22" height="64" rx="11" fill="white" transform="rotate(10 277 388)"/>
+</svg>
