@@ -10,7 +10,12 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(node -e ' *)",
+      "Bash(Remove-Item *)",
+      "Bash(git rm *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)"
     ]
   }
 }
