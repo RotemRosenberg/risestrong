@@ -113,7 +113,7 @@ export default function ExerciseCard({
       </div>
 
       {showModal && (
-        <YoutubeModal exercise={exercise} onClose={() => setShowModal(false)} />
+        <YoutubeModal exercise={exercise} exerciseId={workoutExercise.exerciseId} onClose={() => setShowModal(false)} />
       )}
     </>
   )
