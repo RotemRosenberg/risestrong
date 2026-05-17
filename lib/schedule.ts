@@ -14,6 +14,10 @@ export interface DayInfo {
   isSunday: boolean
   schedule: DaySchedule
   workout: Workout | null
+  /** True when today is before the program start date */
+  notStarted?: boolean
+  /** How many days until the program starts (only set when notStarted = true) */
+  daysUntilStart?: number
 }
 
 export function toISODate(date: Date): string {
@@ -27,8 +31,23 @@ export function getDayInfo(startDate: Date, today: Date): DayInfo {
   const MS_PER_DAY = 1000 * 60 * 60 * 24
   const daysDiff = Math.floor((today.getTime() - startDate.getTime()) / MS_PER_DAY)
 
-  // Week 1 on day 0; clamp to 1 in case today is somehow before startDate
-  const weekNumber = Math.max(1, Math.floor(daysDiff / 7) + 1)
+  // Program hasn't started yet — return a special "not started" shell
+  if (daysDiff < 0) {
+    const dayOfWeek = today.getDay()
+    return {
+      weekNumber: 0,
+      phase: 1,
+      phaseData: PHASES[0],
+      dayOfWeek,
+      isSunday: dayOfWeek === 0,
+      schedule: WEEKLY_STRUCTURE[dayOfWeek],
+      workout: null,
+      notStarted: true,
+      daysUntilStart: Math.abs(daysDiff),
+    }
+  }
+
+  const weekNumber = Math.floor(daysDiff / 7) + 1
 
   // Phase 3 continues indefinitely past week 12
   const phase: 1 | 2 | 3 = weekNumber <= 4 ? 1 : weekNumber <= 8 ? 2 : 3

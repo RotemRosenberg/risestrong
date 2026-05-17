@@ -244,6 +244,16 @@ export default function TodayPage() {
 
       {config && dayInfo && (
         <>
+          {/* ── Program not started yet ─────────────────────────────────────── */}
+          {dayInfo.notStarted ? (
+            <NotStartedCard
+              userName={config.user_name}
+              startDateISO={config.start_date}
+              daysUntilStart={dayInfo.daysUntilStart ?? 1}
+              today={today}
+            />
+          ) : (
+            <>
           <TodayHeader
             userName={config.user_name}
             weekNumber={dayInfo.weekNumber}
@@ -345,6 +355,8 @@ export default function TodayPage() {
               </Collapsible>
             </div>
           )}
+            </>
+          )}
         </>
       )}
     </main>
@@ -428,6 +440,55 @@ function LoadingSkeleton() {
       <div className="animate-pulse bg-gray-200 rounded-2xl h-28" />
       <div className="animate-pulse bg-gray-200 rounded-2xl h-36" />
     </main>
+  )
+}
+
+function NotStartedCard({
+  userName,
+  startDateISO,
+  daysUntilStart,
+  today,
+}: {
+  userName: string
+  startDateISO: string
+  daysUntilStart: number
+  today: Date
+}) {
+  const hour = today.getHours()
+  const greeting =
+    hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
+
+  const startLabel = new Date(startDateISO + 'T00:00:00').toLocaleDateString('en-GB', {
+    weekday: 'long', day: 'numeric', month: 'long',
+  })
+
+  return (
+    <div className="space-y-4 pt-1">
+      <div className="space-y-1">
+        <h1 className="text-xl font-bold text-gray-900">{greeting}, {userName} 👋</h1>
+        <p className="text-sm text-gray-500">
+          {today.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}
+        </p>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col items-center text-center gap-4">
+        <div className="text-5xl">🚀</div>
+        <div>
+          <p className="text-lg font-bold text-gray-900">Program starts in</p>
+          <p className="text-5xl font-extrabold text-[#4CAF50] mt-1">
+            {daysUntilStart} {daysUntilStart === 1 ? 'day' : 'days'}
+          </p>
+        </div>
+        <div className="bg-gray-50 rounded-xl px-4 py-3 w-full">
+          <p className="text-sm text-gray-500">First training day</p>
+          <p className="text-base font-semibold text-gray-800 mt-0.5">{startLabel}</p>
+        </div>
+        <p className="text-sm text-gray-400 leading-relaxed">
+          Rest up — your 12-week calisthenics program begins soon.
+          Make sure you've set your start date in Settings.
+        </p>
+      </div>
+    </div>
   )
 }
 
