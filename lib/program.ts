@@ -229,10 +229,10 @@ export const EXERCISES: Record<string, Exercise> = {
     timed: false,
   },
   nordic_curl: {
-    name: 'Nordic Curl',
+    name: 'Nordic Curl (Eccentric)',
     muscles: ['hamstrings', 'glutes', 'core'],
     youtube_url: 'https://www.youtube.com/embed/d8-oNFUuFtQ',
-    technique: 'Kneel with feet anchored. Lower torso to floor over 3–5 sec. Push up to reset if needed.',
+    technique: 'Eccentric-only for most people. Kneel with feet anchored under a couch. Lower torso to floor over 3–5 sec with full control. Push up with arms to reset — these are negatives, not full reps.',
     timed: false,
   },
   pistol_squat: {
@@ -241,6 +241,20 @@ export const EXERCISES: Record<string, Exercise> = {
     youtube_url: 'https://www.youtube.com/embed/vq5-vdgJc0I',
     technique: 'One leg extended forward. Lower on one leg below parallel. Keep heel down. Fully stand up.',
     timed: false,
+  },
+  assisted_pistol_squat: {
+    name: 'Assisted Pistol Squat',
+    muscles: ['quads', 'glutes', 'hamstrings', 'core'],
+    youtube_url: 'https://www.youtube.com/embed/vq5-vdgJc0I',
+    technique: 'Hold a door frame, strap, or pole for support. One leg extended forward. Sit back on the supporting leg, using grip only as much as needed. Goal: less support each week.',
+    timed: false,
+  },
+  tuck_front_lever: {
+    name: 'Tuck Front Lever',
+    muscles: ['back', 'core', 'biceps', 'shoulders'],
+    youtube_url: 'https://www.youtube.com/embed/UNQNF_vFjXA',
+    technique: 'Hang from bar. Pull body up so torso is horizontal with the ground, knees tucked tight to chest. Hold the isometric position. Builds back/core strength toward full front lever.',
+    timed: true,
   },
   australian_row: {
     name: 'Australian Row',
@@ -296,6 +310,7 @@ export const PHASES: Phase[] = [
         exercises: [
           { exerciseId: 'dead_hang',       sets: 3, reps: 15 },
           { exerciseId: 'scapular_pull',   sets: 3, reps: 8  },
+          { exerciseId: 'australian_row',  sets: 3, reps: 6  },
           { exerciseId: 'squat',           sets: 3, reps: 12 },
           { exerciseId: 'hip_bridge',      sets: 3, reps: 15 },
           { exerciseId: 'knee_raise_hang', sets: 2, reps: 8  },
@@ -323,7 +338,7 @@ export const PHASES: Phase[] = [
           { exerciseId: 'chin_up_negative',       sets: 4, reps: 4, },
           { exerciseId: 'australian_row',         sets: 3, reps: 8, },
           { exerciseId: 'bulgarian_split_squat',  sets: 3, reps: 8, eachSide: true },
-          { exerciseId: 'nordic_curl',            sets: 3, reps: 5, },
+          { exerciseId: 'nordic_curl',            sets: 3, reps: 3, },
           { exerciseId: 'l_hang',                 sets: 3, reps: 8, },
         ],
       },
@@ -348,9 +363,9 @@ export const PHASES: Phase[] = [
         exercises: [
           { exerciseId: 'pull_up_full',           sets: 5, reps: 3,  },
           { exerciseId: 'australian_row_single',  sets: 3, reps: 6,  eachSide: true },
-          { exerciseId: 'pistol_squat',           sets: 3, reps: 5,  eachSide: true },
+          { exerciseId: 'assisted_pistol_squat',  sets: 3, reps: 5,  eachSide: true },
           { exerciseId: 'nordic_curl',            sets: 3, reps: 5,  },
-          { exerciseId: 'tuck_back_lever',        sets: 3, reps: 12, },
+          { exerciseId: 'tuck_front_lever',       sets: 3, reps: 10, },
         ],
       },
     },
@@ -391,6 +406,16 @@ export const WARMUP: WarmupItem[] = [
     name: 'Wrist Rotations',
     duration: '10 each direction',
     description: 'Essential prep before push and pull exercises.',
+  },
+  {
+    name: 'Band Pull-Aparts',
+    duration: '15 reps',
+    description: 'Hold a band or towel at chest height with straight arms. Pull apart, squeezing shoulder blades together. Critical for shoulder health in calisthenics.',
+  },
+  {
+    name: 'Scapular Wall Slides',
+    duration: '10 reps',
+    description: 'Back against wall, arms in goal-post position. Slide arms up while keeping forearms in contact with wall. Builds overhead mobility for handstand/pike work.',
   },
 ]
 
