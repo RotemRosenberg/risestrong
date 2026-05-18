@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import confetti from 'canvas-confetti'
 import { ChevronDown } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { getDayInfo, toISODate, type DayInfo } from '@/lib/schedule'
+import { getDayInfo, progressedTarget, toISODate, type DayInfo } from '@/lib/schedule'
 import { EXERCISES, WARMUP, COOLDOWN } from '@/lib/program'
 import TodayHeader from '@/components/TodayHeader'
 import WeighInCard from '@/components/WeighInCard'
@@ -89,8 +89,10 @@ export default function TodayPage() {
         if (di.workout) {
           const map: SetsMap = {}
           for (const we of di.workout.exercises) {
+            const exercise = EXERCISES[we.exerciseId]
+            const target = progressedTarget(we.reps, di.weekInPhase, exercise?.timed ?? false)
             const completed = Array<boolean>(we.sets).fill(false)
-            const reps = Array<number>(we.sets).fill(we.reps)
+            const reps = Array<number>(we.sets).fill(target)
             if (setsRows) {
               for (const row of setsRows) {
                 if (row.exercise_id === we.exerciseId && row.set_index < we.sets) {
@@ -321,15 +323,17 @@ export default function TodayPage() {
               {workout.exercises.map(we => {
                 const exercise = EXERCISES[we.exerciseId]
                 if (!exercise) return null
+                const target = progressedTarget(we.reps, dayInfo.weekInPhase, exercise.timed)
+                const resolvedWe = { ...we, reps: target }
                 const saved = setsMap[we.exerciseId] ?? {
                   completed: Array<boolean>(we.sets).fill(false),
-                  reps: Array<number>(we.sets).fill(we.reps),
+                  reps: Array<number>(we.sets).fill(target),
                 }
                 return (
                   <ExerciseCard
                     key={we.exerciseId}
                     exercise={exercise}
-                    workoutExercise={we}
+                    workoutExercise={resolvedWe}
                     savedSets={saved.completed}
                     savedReps={saved.reps}
                     onSetToggle={i => handleSetToggle(we.exerciseId, i)}

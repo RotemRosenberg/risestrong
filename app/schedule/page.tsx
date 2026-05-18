@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { getDayInfo, toISODate, type DayInfo } from '@/lib/schedule'
+import { getDayInfo, progressedTarget, toISODate, type DayInfo } from '@/lib/schedule'
 import { EXERCISES, PHASES } from '@/lib/program'
 
 const TOTAL_WEEKS = 12
@@ -212,9 +212,10 @@ function DayCard({ day }: { day: WeekDay }) {
           {workout.exercises.map((we, i) => {
             const ex = EXERCISES[we.exerciseId]
             if (!ex) return null
+            const reps = progressedTarget(we.reps, dayInfo.weekInPhase, ex.timed)
             const unit = ex.timed ? 's' : ''
             const each = we.eachSide ? ' each side' : ''
-            const target = `${we.sets} × ${we.reps}${unit}${each}`
+            const target = `${we.sets} × ${reps}${unit}${each}`
             return (
               <div
                 key={i}
