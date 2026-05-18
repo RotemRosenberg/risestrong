@@ -13,14 +13,14 @@ export const EXERCISE_ANIM: Record<string, string> = {
   pike_hold: 'pike', pike_push_up: 'pike', wall_pike_push_up: 'pike',
   dead_hang: 'hang', scapular_pull: 'hang',
   chin_up_negative: 'pullup', pull_up_full: 'pullup',
-  tuck_back_lever: 'pullup', tuck_front_lever: 'pullup',
   knee_raise_hang: 'knee_raise', l_hang: 'knee_raise',
-  dip_negative: 'dip',
+  bench_dip: 'dip',
   squat: 'squat', bulgarian_split_squat: 'squat',
   pistol_squat: 'squat', assisted_pistol_squat: 'squat',
   hip_bridge: 'bridge',
   nordic_curl: 'nordic',
-  australian_row: 'row', australian_row_single: 'row',
+  doorway_row: 'row', towel_row_single: 'row',
+  hollow_body_hold: 'plank',
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

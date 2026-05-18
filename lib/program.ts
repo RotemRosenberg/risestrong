@@ -151,11 +151,11 @@ export const EXERCISES: Record<string, Exercise> = {
     technique: 'Feet on wall, body near vertical. Push-up movement trains the handstand push-up pattern.',
     timed: false,
   },
-  dip_negative: {
-    name: 'Dip Negative',
+  bench_dip: {
+    name: 'Bench Dip (Feet Elevated)',
     muscles: ['triceps', 'chest', 'shoulders'],
-    youtube_url: 'https://www.youtube.com/embed/2z8JmcrW-As',
-    technique: 'Start at top of dip. Lower over 5 seconds with full control. Step or jump back to top.',
+    youtube_url: '',
+    technique: 'Sit on edge of a sturdy chair, hands gripping the edge by your hips. Slide butt off the front. Place feet on another chair so legs are extended and elevated. Lower until elbows reach ~90°. Press back up. No dip bars needed.',
     timed: false,
   },
   dead_hang: {
@@ -200,13 +200,6 @@ export const EXERCISES: Record<string, Exercise> = {
     technique: 'Dead hang, raise legs parallel to floor (L shape). Squeeze core throughout. Hold.',
     timed: true,
   },
-  tuck_back_lever: {
-    name: 'Tuck Back Lever',
-    muscles: ['back', 'core', 'biceps', 'shoulders'],
-    youtube_url: 'https://www.youtube.com/embed/UNQNF_vFjXA',
-    technique: 'On bar or rings, invert with knees tucked. Hold body parallel to ground. Advanced skill.',
-    timed: true,
-  },
   squat: {
     name: 'Squat',
     muscles: ['quads', 'glutes', 'hamstrings', 'core'],
@@ -249,25 +242,25 @@ export const EXERCISES: Record<string, Exercise> = {
     technique: 'Hold a door frame, strap, or pole for support. One leg extended forward. Sit back on the supporting leg, using grip only as much as needed. Goal: less support each week.',
     timed: false,
   },
-  tuck_front_lever: {
-    name: 'Tuck Front Lever',
-    muscles: ['back', 'core', 'biceps', 'shoulders'],
-    youtube_url: 'https://www.youtube.com/embed/UNQNF_vFjXA',
-    technique: 'Hang from bar. Pull body up so torso is horizontal with the ground, knees tucked tight to chest. Hold the isometric position. Builds back/core strength toward full front lever.',
+  hollow_body_hold: {
+    name: 'Hollow Body Hold',
+    muscles: ['core', 'hip flexors'],
+    youtube_url: '',
+    technique: 'Lie on back. Press lower back firmly into the floor. Extend arms overhead and legs straight. Lift everything ~10cm off the floor — arms, head, shoulders, legs. Body forms a shallow banana shape. Hold while breathing steadily.',
     timed: true,
   },
-  australian_row: {
-    name: 'Australian Row',
+  doorway_row: {
+    name: 'Doorway Row',
     muscles: ['back', 'biceps', 'core'],
-    youtube_url: 'https://www.youtube.com/embed/dvkIaarnf0g',
-    technique: 'Hang below bar with straight body. Pull chest to bar, squeezing shoulder blades together.',
+    youtube_url: '',
+    technique: 'Stand close to a sturdy door frame. Grip both edges at hip height with arms straight, feet close to frame. Lean back keeping body in a straight line. Pull yourself upright by squeezing shoulder blades. The further your feet from the frame, the harder.',
     timed: false,
   },
-  australian_row_single: {
-    name: 'Australian Row (Single Arm)',
+  towel_row_single: {
+    name: 'Towel Row (Single Arm)',
     muscles: ['back', 'biceps', 'core', 'obliques'],
-    youtube_url: 'https://www.youtube.com/embed/dvkIaarnf0g',
-    technique: 'One arm under bar. Pull chest up. Brace core hard to prevent rotation. Alternate arms.',
+    youtube_url: '',
+    technique: 'Loop a thick towel under a heavy table leg (or around a sturdy banister). Grip both ends with one hand. Lean back with body straight, arm extended. Pull chest toward the anchor by squeezing shoulder blade. Brace core hard to prevent rotation. Alternate arms.',
     timed: false,
   },
 }
@@ -310,7 +303,7 @@ export const PHASES: Phase[] = [
         exercises: [
           { exerciseId: 'dead_hang',       sets: 3, reps: 15 },
           { exerciseId: 'scapular_pull',   sets: 3, reps: 8  },
-          { exerciseId: 'australian_row',  sets: 3, reps: 6  },
+          { exerciseId: 'doorway_row',     sets: 3, reps: 8  },
           { exerciseId: 'squat',           sets: 3, reps: 12 },
           { exerciseId: 'hip_bridge',      sets: 3, reps: 15 },
           { exerciseId: 'knee_raise_hang', sets: 2, reps: 8  },
@@ -336,7 +329,7 @@ export const PHASES: Phase[] = [
       b: {
         exercises: [
           { exerciseId: 'chin_up_negative',       sets: 4, reps: 4, },
-          { exerciseId: 'australian_row',         sets: 3, reps: 8, },
+          { exerciseId: 'doorway_row',            sets: 3, reps: 10, },
           { exerciseId: 'bulgarian_split_squat',  sets: 3, reps: 8, eachSide: true },
           { exerciseId: 'nordic_curl',            sets: 3, reps: 3, },
           { exerciseId: 'l_hang',                 sets: 3, reps: 8, },
@@ -356,16 +349,16 @@ export const PHASES: Phase[] = [
           { exerciseId: 'pause_push_up',       sets: 3, reps: 8  },
           { exerciseId: 'wall_pike_push_up',   sets: 3, reps: 6  },
           { exerciseId: 'plank_shoulder_taps', sets: 3, reps: 10, eachSide: true },
-          { exerciseId: 'dip_negative',        sets: 4, reps: 5  },
+          { exerciseId: 'bench_dip',           sets: 3, reps: 8  },
         ],
       },
       b: {
         exercises: [
           { exerciseId: 'pull_up_full',           sets: 5, reps: 3,  },
-          { exerciseId: 'australian_row_single',  sets: 3, reps: 6,  eachSide: true },
+          { exerciseId: 'towel_row_single',       sets: 3, reps: 6,  eachSide: true },
           { exerciseId: 'assisted_pistol_squat',  sets: 3, reps: 5,  eachSide: true },
           { exerciseId: 'nordic_curl',            sets: 3, reps: 5,  },
-          { exerciseId: 'tuck_front_lever',       sets: 3, reps: 10, },
+          { exerciseId: 'hollow_body_hold',       sets: 3, reps: 20, },
         ],
       },
     },
