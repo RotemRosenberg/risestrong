@@ -15,7 +15,9 @@
       "Bash(Remove-Item *)",
       "Bash(git rm *)",
       "Bash(npm run *)",
-      "Bash(curl -s http://localhost:3000)"
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(npx next *)",
+      "Bash(npx eslint *)"
     ]
   }
 }
