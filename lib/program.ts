@@ -154,7 +154,7 @@ export const EXERCISES: Record<string, Exercise> = {
   bench_dip: {
     name: 'Bench Dip (Feet Elevated)',
     muscles: ['triceps', 'chest', 'shoulders'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/shorts/4ua3MzaU0QU',
     technique: 'Sit on edge of a sturdy chair, hands gripping the edge by your hips. Slide butt off the front. Place feet on another chair so legs are extended and elevated. Lower until elbows reach ~90°. Press back up. No dip bars needed.',
     timed: false,
   },
@@ -245,21 +245,21 @@ export const EXERCISES: Record<string, Exercise> = {
   hollow_body_hold: {
     name: 'Hollow Body Hold',
     muscles: ['core', 'hip flexors'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/watch?v=EsnM8eBtazU',
     technique: 'Lie on back. Press lower back firmly into the floor. Extend arms overhead and legs straight. Lift everything ~10cm off the floor — arms, head, shoulders, legs. Body forms a shallow banana shape. Hold while breathing steadily.',
     timed: true,
   },
   doorway_row: {
     name: 'Doorway Row',
     muscles: ['back', 'biceps', 'core'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/watch?v=laxlC3wq6sU',
     technique: 'Stand close to a sturdy door frame. Grip both edges at hip height with arms straight, feet close to frame. Lean back keeping body in a straight line. Pull yourself upright by squeezing shoulder blades. The further your feet from the frame, the harder.',
     timed: false,
   },
   towel_row_single: {
     name: 'Towel Row (Single Arm)',
     muscles: ['back', 'biceps', 'core', 'obliques'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/watch?v=mW9vbGO6PBA',
     technique: 'Loop a thick towel under a heavy table leg (or around a sturdy banister). Grip both ends with one hand. Lean back with body straight, arm extended. Pull chest toward the anchor by squeezing shoulder blade. Brace core hard to prevent rotation. Alternate arms.',
     timed: false,
   },
