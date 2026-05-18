@@ -293,6 +293,13 @@ export default function TodayPage() {
                 open={warmupOpen}
                 onToggle={() => setWarmupOpen(o => !o)}
               >
+                <MarkAllRow
+                  checked={warmupChecked}
+                  onToggleAll={() => {
+                    const allDone = warmupChecked.every(Boolean)
+                    setWarmupChecked(WARMUP.map(() => !allDone))
+                  }}
+                />
                 {WARMUP.map((item, i) => (
                   <CheckItem
                     key={i}
@@ -337,6 +344,13 @@ export default function TodayPage() {
                 open={cooldownOpen}
                 onToggle={() => setCooldownOpen(o => !o)}
               >
+                <MarkAllRow
+                  checked={cooldownChecked}
+                  onToggleAll={() => {
+                    const allDone = cooldownChecked.every(Boolean)
+                    setCooldownChecked(COOLDOWN.map(() => !allDone))
+                  }}
+                />
                 {COOLDOWN.map((item, i) => (
                   <CheckItem
                     key={i}
@@ -389,6 +403,30 @@ function Collapsible({
         />
       </button>
       {open && <div className="px-4 pb-4 space-y-2 border-t border-gray-100">{children}</div>}
+    </div>
+  )
+}
+
+function MarkAllRow({
+  checked,
+  onToggleAll,
+}: {
+  checked: boolean[]
+  onToggleAll: () => void
+}) {
+  const allDone = checked.length > 0 && checked.every(Boolean)
+  return (
+    <div className="flex justify-end pt-2 pb-1">
+      <button
+        onClick={onToggleAll}
+        className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-colors ${
+          allDone
+            ? 'text-gray-500 bg-gray-100 hover:bg-gray-200 active:bg-gray-300'
+            : 'text-[#4CAF50] bg-green-50 hover:bg-green-100 active:bg-green-200'
+        }`}
+      >
+        {allDone ? 'Clear all' : '✓ Mark all done'}
+      </button>
     </div>
   )
 }
