@@ -262,7 +262,7 @@ export default function TodayPage() {
             today={today}
           />
 
-          {dayInfo.isSunday && <WeighInCard today={today} />}
+          {dayInfo.isWeighInDay && <WeighInCard today={today} />}
 
           <DayTypeCard dayInfo={dayInfo} />
 
