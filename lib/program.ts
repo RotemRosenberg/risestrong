@@ -63,7 +63,7 @@ export const EXERCISES: Record<string, Exercise> = {
   incline_push_up: {
     name: 'Incline Push-Up',
     muscles: ['chest', 'triceps', 'shoulders', 'core'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/shorts/WH5NdpgxM80',
     technique: 'Hands on a sturdy chair, sofa edge, or kitchen counter. Body in a straight line from head to heels in full plank position. Lower chest to the edge with elbows at 45°. The higher your hands, the easier — pick a height you can do 6+ reps with good form, then lower the angle as you progress.',
     timed: false,
   },
@@ -84,7 +84,7 @@ export const EXERCISES: Record<string, Exercise> = {
   knee_diamond_push_up: {
     name: 'Knee Diamond Push-Up',
     muscles: ['triceps', 'chest', 'shoulders'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/shorts/uDo9Yxpe63w',
     technique: 'On knees with hands forming a diamond shape under the chest. Keep elbows tucked close to body throughout. Easier than the full diamond — bridges your knee push-up strength to full diamond.',
     timed: false,
   },
@@ -182,7 +182,7 @@ export const EXERCISES: Record<string, Exercise> = {
   jumping_pull_up: {
     name: 'Jumping Pull-Up',
     muscles: ['back', 'biceps', 'core'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/shorts/qc1nl8K5uVk',
     technique: 'Stand under the bar (jump up to it if needed). Use a strong leg drive to jump so your chin clears the bar. Then lower yourself with full control over 3–5 seconds. Step back down and reset. The eccentric is what builds pull-up strength.',
     timed: false,
   },
@@ -210,7 +210,7 @@ export const EXERCISES: Record<string, Exercise> = {
   tuck_l_hang: {
     name: 'Tuck L-Hang',
     muscles: ['core', 'hip flexors', 'back', 'forearms'],
-    youtube_url: '',
+    youtube_url: 'https://www.youtube.com/watch?v=6HiKdQsLHuI',
     technique: 'Dead hang from the bar. Raise both knees up tight to your chest and hold the position. Squeeze core throughout. Easier than the full L-Hang — knees stay tucked instead of legs extending straight forward.',
     timed: true,
   },
