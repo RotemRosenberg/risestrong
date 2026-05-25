@@ -60,6 +60,13 @@ export const EXERCISES: Record<string, Exercise> = {
     technique: 'Knees on floor, straight line from knees to shoulders. Lower chest to floor with elbows at 45°.',
     timed: false,
   },
+  incline_push_up: {
+    name: 'Incline Push-Up',
+    muscles: ['chest', 'triceps', 'shoulders', 'core'],
+    youtube_url: '',
+    technique: 'Hands on a sturdy chair, sofa edge, or kitchen counter. Body in a straight line from head to heels in full plank position. Lower chest to the edge with elbows at 45°. The higher your hands, the easier — pick a height you can do 6+ reps with good form, then lower the angle as you progress.',
+    timed: false,
+  },
   full_push_up: {
     name: 'Push-Up',
     muscles: ['chest', 'triceps', 'shoulders', 'core'],
@@ -72,6 +79,13 @@ export const EXERCISES: Record<string, Exercise> = {
     muscles: ['triceps', 'chest', 'shoulders'],
     youtube_url: 'https://www.youtube.com/shorts/fFOH_RjxnHY',
     technique: 'Hands form a diamond shape under chest. Keep elbows tucked close to body throughout.',
+    timed: false,
+  },
+  knee_diamond_push_up: {
+    name: 'Knee Diamond Push-Up',
+    muscles: ['triceps', 'chest', 'shoulders'],
+    youtube_url: '',
+    technique: 'On knees with hands forming a diamond shape under the chest. Keep elbows tucked close to body throughout. Easier than the full diamond — bridges your knee push-up strength to full diamond.',
     timed: false,
   },
   archer_push_up: {
@@ -144,13 +158,6 @@ export const EXERCISES: Record<string, Exercise> = {
     technique: 'Start in pike position. Bend elbows to lower head toward floor. Press back to start.',
     timed: false,
   },
-  wall_pike_push_up: {
-    name: 'Wall Pike Push-Up',
-    muscles: ['shoulders', 'triceps', 'upper back'],
-    youtube_url: 'https://www.youtube.com/watch?v=i33dCcHR__s',
-    technique: 'Feet on wall, body near vertical. Push-up movement trains the handstand push-up pattern.',
-    timed: false,
-  },
   bench_dip: {
     name: 'Bench Dip (Feet Elevated)',
     muscles: ['triceps', 'chest', 'shoulders'],
@@ -170,6 +177,13 @@ export const EXERCISES: Record<string, Exercise> = {
     muscles: ['back', 'shoulders'],
     youtube_url: 'https://www.youtube.com/shorts/9M8ylnbriB0',
     technique: 'Dead hang. Without bending elbows, pull shoulder blades down and together, then release.',
+    timed: false,
+  },
+  jumping_pull_up: {
+    name: 'Jumping Pull-Up',
+    muscles: ['back', 'biceps', 'core'],
+    youtube_url: '',
+    technique: 'Stand under the bar (jump up to it if needed). Use a strong leg drive to jump so your chin clears the bar. Then lower yourself with full control over 3–5 seconds. Step back down and reset. The eccentric is what builds pull-up strength.',
     timed: false,
   },
   chin_up_negative: {
@@ -192,6 +206,13 @@ export const EXERCISES: Record<string, Exercise> = {
     youtube_url: 'https://www.youtube.com/watch?v=GgiqZFtK6gw',
     technique: 'Dead hang. Raise knees to chest using core only — no momentum. Lower with control.',
     timed: false,
+  },
+  tuck_l_hang: {
+    name: 'Tuck L-Hang',
+    muscles: ['core', 'hip flexors', 'back', 'forearms'],
+    youtube_url: '',
+    technique: 'Dead hang from the bar. Raise both knees up tight to your chest and hold the position. Squeeze core throughout. Easier than the full L-Hang — knees stay tucked instead of legs extending straight forward.',
+    timed: true,
   },
   l_hang: {
     name: 'L-Hang',
@@ -241,13 +262,6 @@ export const EXERCISES: Record<string, Exercise> = {
     youtube_url: 'https://www.youtube.com/shorts/OK0h20sd5uo',
     technique: 'Hold a door frame, strap, or pole for support. One leg extended forward. Sit back on the supporting leg, using grip only as much as needed. Goal: less support each week.',
     timed: false,
-  },
-  hollow_body_hold: {
-    name: 'Hollow Body Hold',
-    muscles: ['core', 'hip flexors'],
-    youtube_url: 'https://www.youtube.com/watch?v=EsnM8eBtazU',
-    technique: 'Lie on back. Press lower back firmly into the floor. Extend arms overhead and legs straight. Lift everything ~10cm off the floor — arms, head, shoulders, legs. Body forms a shallow banana shape. Hold while breathing steadily.',
-    timed: true,
   },
   doorway_row: {
     name: 'Doorway Row',
@@ -319,20 +333,20 @@ export const PHASES: Phase[] = [
     workouts: {
       a: {
         exercises: [
-          { exerciseId: 'full_push_up',      sets: 4, reps: 8  },
-          { exerciseId: 'diamond_push_up',   sets: 3, reps: 6  },
-          { exerciseId: 'negative_push_up',  sets: 3, reps: 5  },
-          { exerciseId: 'extended_plank',    sets: 3, reps: 35 },
-          { exerciseId: 'pike_push_up',      sets: 3, reps: 6  },
+          { exerciseId: 'incline_push_up',       sets: 3, reps: 6  },
+          { exerciseId: 'knee_diamond_push_up',  sets: 3, reps: 5  },
+          { exerciseId: 'negative_push_up',      sets: 3, reps: 5  },
+          { exerciseId: 'extended_plank',        sets: 3, reps: 25 },
+          { exerciseId: 'pike_push_up',          sets: 3, reps: 4  },
         ],
       },
       b: {
         exercises: [
-          { exerciseId: 'chin_up_negative',       sets: 4, reps: 4, },
+          { exerciseId: 'jumping_pull_up',        sets: 3, reps: 4, },
           { exerciseId: 'doorway_row',            sets: 3, reps: 10, },
-          { exerciseId: 'bulgarian_split_squat',  sets: 3, reps: 8, eachSide: true },
+          { exerciseId: 'bulgarian_split_squat',  sets: 3, reps: 6, eachSide: true },
           { exerciseId: 'nordic_curl',            sets: 3, reps: 3, },
-          { exerciseId: 'l_hang',                 sets: 3, reps: 8, },
+          { exerciseId: 'tuck_l_hang',            sets: 3, reps: 8, },
         ],
       },
     },
@@ -345,20 +359,21 @@ export const PHASES: Phase[] = [
     workouts: {
       a: {
         exercises: [
-          { exerciseId: 'archer_push_up',      sets: 4, reps: 5,  eachSide: true },
-          { exerciseId: 'pause_push_up',       sets: 3, reps: 8  },
-          { exerciseId: 'wall_pike_push_up',   sets: 3, reps: 6  },
+          { exerciseId: 'full_push_up',        sets: 3, reps: 5  },
+          { exerciseId: 'archer_push_up',      sets: 3, reps: 5,  eachSide: true },
+          { exerciseId: 'pause_push_up',       sets: 3, reps: 5  },
           { exerciseId: 'plank_shoulder_taps', sets: 3, reps: 10, eachSide: true },
-          { exerciseId: 'bench_dip',           sets: 3, reps: 8  },
+          { exerciseId: 'bench_dip',           sets: 3, reps: 6  },
         ],
       },
       b: {
         exercises: [
-          { exerciseId: 'pull_up_full',           sets: 5, reps: 3,  },
-          { exerciseId: 'towel_row_single',       sets: 3, reps: 6,  eachSide: true },
-          { exerciseId: 'assisted_pistol_squat',  sets: 3, reps: 5,  eachSide: true },
+          { exerciseId: 'chin_up_negative',       sets: 3, reps: 3,  },
+          { exerciseId: 'pull_up_full',           sets: 3, reps: 1,  },
+          { exerciseId: 'towel_row_single',       sets: 3, reps: 5,  eachSide: true },
+          { exerciseId: 'assisted_pistol_squat',  sets: 3, reps: 4,  eachSide: true },
+          { exerciseId: 'l_hang',                 sets: 3, reps: 8,  },
           { exerciseId: 'nordic_curl',            sets: 3, reps: 5,  },
-          { exerciseId: 'hollow_body_hold',       sets: 3, reps: 20, },
         ],
       },
     },

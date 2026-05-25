@@ -6,21 +6,21 @@ import type { ReactElement } from 'react'
    Exercise → animation-category map
    ───────────────────────────────────────────────────────────────────────────── */
 export const EXERCISE_ANIM: Record<string, string> = {
-  knee_push_up: 'pushup', full_push_up: 'pushup', diamond_push_up: 'pushup',
+  knee_push_up: 'pushup', incline_push_up: 'pushup', full_push_up: 'pushup',
+  diamond_push_up: 'pushup', knee_diamond_push_up: 'pushup',
   archer_push_up: 'pushup', negative_push_up: 'pushup', pause_push_up: 'pushup',
   plank: 'plank', extended_plank: 'plank', plank_shoulder_taps: 'plank',
   side_plank_left: 'side_plank', side_plank_right: 'side_plank',
-  pike_hold: 'pike', pike_push_up: 'pike', wall_pike_push_up: 'pike',
+  pike_hold: 'pike', pike_push_up: 'pike',
   dead_hang: 'hang', scapular_pull: 'hang',
-  chin_up_negative: 'pullup', pull_up_full: 'pullup',
-  knee_raise_hang: 'knee_raise', l_hang: 'knee_raise',
+  jumping_pull_up: 'pullup', chin_up_negative: 'pullup', pull_up_full: 'pullup',
+  knee_raise_hang: 'knee_raise', tuck_l_hang: 'knee_raise', l_hang: 'knee_raise',
   bench_dip: 'dip',
   squat: 'squat', bulgarian_split_squat: 'squat',
   pistol_squat: 'squat', assisted_pistol_squat: 'squat',
   hip_bridge: 'bridge',
   nordic_curl: 'nordic',
   doorway_row: 'row', towel_row_single: 'row',
-  hollow_body_hold: 'plank',
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
