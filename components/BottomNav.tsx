@@ -18,7 +18,7 @@ export default function BottomNav() {
   if (pathname === '/login') return null
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 pb-[env(safe-area-inset-bottom)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 pb-[env(safe-area-inset-bottom)]">
       <div className="flex h-16">
         {tabs.map(({ href, label, Icon }) => {
           const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
@@ -28,8 +28,8 @@ export default function BottomNav() {
               href={href}
               className="flex flex-1 flex-col items-center justify-center gap-0.5"
             >
-              <Icon size={22} className={active ? 'text-[#4CAF50]' : 'text-gray-400'} />
-              <span className={`text-xs font-medium ${active ? 'text-[#4CAF50]' : 'text-gray-400'}`}>
+              <Icon size={22} className={active ? 'text-[#4CAF50]' : 'text-gray-400 dark:text-gray-500'} />
+              <span className={`text-xs font-medium ${active ? 'text-[#4CAF50]' : 'text-gray-400 dark:text-gray-500'}`}>
                 {label}
               </span>
             </Link>

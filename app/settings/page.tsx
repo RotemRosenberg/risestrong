@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import ThemeToggle from '@/components/ThemeToggle'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -164,16 +165,16 @@ export default function SettingsPage() {
       {/* Reset confirm modal */}
       {showResetConfirm && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 px-4 pb-8 sm:pb-0">
-          <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl space-y-4">
-            <h3 className="font-bold text-gray-900 text-lg">Reset All Progress?</h3>
-            <p className="text-sm text-gray-500 leading-relaxed">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl space-y-4">
+            <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg">Reset All Progress?</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
               This will permanently delete all your workout progress and weight logs.
               Your settings will be kept. This cannot be undone.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowResetConfirm(false)}
-                className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition-colors"
+                className="flex-1 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
               >
                 Cancel
               </button>
@@ -189,7 +190,7 @@ export default function SettingsPage() {
         </div>
       )}
 
-      <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Settings</h1>
 
       {/* ── Card 1: Profile ── */}
       <SettingsCard title="Profile">
@@ -212,6 +213,13 @@ export default function SettingsPage() {
           <p className="text-xs text-amber-600 mt-1.5 leading-snug">
             ⚠️ Changing this will recalculate your current week and phase
           </p>
+        </Field>
+      </SettingsCard>
+
+      {/* ── Card: Appearance ── */}
+      <SettingsCard title="Appearance">
+        <Field label="Theme">
+          <ThemeToggle />
         </Field>
       </SettingsCard>
 
@@ -256,8 +264,8 @@ export default function SettingsPage() {
 
         <div className="flex items-center justify-between pt-1">
           <div>
-            <p className="text-sm font-medium text-gray-700">Browser notifications</p>
-            <p className="text-xs text-gray-400 mt-0.5">
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Browser notifications</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
               Status:{' '}
               <span
                 className={
@@ -303,14 +311,14 @@ export default function SettingsPage() {
       </button>
 
       {/* ── Card 4: Danger Zone ── */}
-      <div className="bg-white rounded-2xl shadow-sm p-4 border border-red-200 space-y-2">
-        <h2 className="font-bold text-red-600">Danger Zone</h2>
-        <p className="text-xs text-gray-400 leading-snug">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 border border-red-200 dark:border-red-900/50 space-y-2">
+        <h2 className="font-bold text-red-600 dark:text-red-400">Danger Zone</h2>
+        <p className="text-xs text-gray-400 dark:text-gray-500 leading-snug">
           Permanently deletes all workout logs and weight entries. Your config is preserved.
         </p>
         <button
           onClick={() => setShowResetConfirm(true)}
-          className="w-full mt-1 py-2.5 rounded-xl border border-red-300 text-red-600 text-sm font-semibold hover:bg-red-50 transition-colors"
+          className="w-full mt-1 py-2.5 rounded-xl border border-red-300 dark:border-red-900/50 text-red-600 dark:text-red-400 text-sm font-semibold hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
         >
           Reset All Progress
         </button>
@@ -319,11 +327,11 @@ export default function SettingsPage() {
       {/* ── Account ── */}
       <div className="flex flex-col items-center gap-2 pt-2 pb-2">
         {userEmail && (
-          <p className="text-xs text-gray-400">Logged in as {userEmail}</p>
+          <p className="text-xs text-gray-400 dark:text-gray-500">Logged in as {userEmail}</p>
         )}
         <button
           onClick={handleSignOut}
-          className="text-sm text-gray-500 underline hover:text-gray-700 transition-colors"
+          className="text-sm text-gray-500 dark:text-gray-400 underline hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
         >
           Sign Out
         </button>
@@ -335,7 +343,7 @@ export default function SettingsPage() {
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
 const inputCls =
-  'w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors'
+  'w-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-xl px-3 py-2.5 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-colors'
 
 function SettingsCard({
   title,
@@ -345,8 +353,8 @@ function SettingsCard({
   children: React.ReactNode
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-4 space-y-3">
-      <h2 className="font-bold text-gray-800">{title}</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 space-y-3">
+      <h2 className="font-bold text-gray-800 dark:text-gray-200">{title}</h2>
       {children}
     </div>
   )
@@ -361,7 +369,7 @@ function Field({
 }) {
   return (
     <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-600">{label}</label>
+      <label className="block text-sm font-medium text-gray-600 dark:text-gray-300">{label}</label>
       {children}
     </div>
   )
@@ -370,9 +378,9 @@ function Field({
 function LoadingSkeleton() {
   return (
     <div className="max-w-lg mx-auto px-4 pt-5 pb-8 space-y-4">
-      <div className="h-7 bg-gray-200 rounded-lg w-28 animate-pulse" />
+      <div className="h-7 bg-gray-200 dark:bg-gray-800 rounded-lg w-28 animate-pulse" />
       {[0, 1, 2].map(i => (
-        <div key={i} className="h-36 bg-gray-200 rounded-2xl animate-pulse" />
+        <div key={i} className="h-36 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
       ))}
     </div>
   )

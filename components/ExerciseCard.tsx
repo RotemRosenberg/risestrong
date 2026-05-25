@@ -31,10 +31,10 @@ export default function ExerciseCard({
   const someDone = completedCount > 0 && !allDone
 
   const cardClass = allDone
-    ? 'bg-green-50 border-2 border-green-400'
+    ? 'bg-green-50 dark:bg-green-950/40 border-2 border-green-400 dark:border-green-700'
     : someDone
-    ? 'bg-white border-2 border-blue-300'
-    : 'bg-white border border-gray-200'
+    ? 'bg-white dark:bg-gray-800 border-2 border-blue-300 dark:border-blue-700'
+    : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'
 
   const targetLabel = `${workoutExercise.sets} × ${workoutExercise.reps}${exercise.timed ? 's' : ''}${workoutExercise.eachSide ? ' each side' : ''}`
 
@@ -62,8 +62,8 @@ export default function ExerciseCard({
         <div className="p-4 space-y-3">
           {/* Header */}
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-bold text-gray-900 leading-tight">{exercise.name}</h3>
-            <span className="text-xs text-gray-400 shrink-0 pt-0.5">Target: {targetLabel}</span>
+            <h3 className="font-bold text-gray-900 dark:text-gray-100 leading-tight">{exercise.name}</h3>
+            <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0 pt-0.5">Target: {targetLabel}</span>
           </div>
 
           {/* Muscle tags */}
@@ -71,7 +71,7 @@ export default function ExerciseCard({
             {exercise.muscles.map(m => (
               <span
                 key={m}
-                className="bg-gray-100 text-gray-500 text-xs px-2 py-0.5 rounded-full capitalize"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 text-xs px-2 py-0.5 rounded-full capitalize"
               >
                 {m}
               </span>
@@ -79,7 +79,7 @@ export default function ExerciseCard({
           </div>
 
           {/* Technique */}
-          <p className="text-xs text-gray-500 italic leading-relaxed">
+          <p className="text-xs text-gray-500 dark:text-gray-400 italic leading-relaxed">
             {exercise.technique}
           </p>
 
@@ -89,7 +89,7 @@ export default function ExerciseCard({
               onClick={openTimer}
               className={`w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-base font-bold transition-colors shadow-sm ${
                 allDone
-                  ? 'bg-white border-2 border-[#4CAF50] text-[#4CAF50]'
+                  ? 'bg-white dark:bg-gray-800 border-2 border-[#4CAF50] text-[#4CAF50]'
                   : 'bg-[#4CAF50] hover:bg-green-600 text-white'
               }`}
             >
@@ -110,7 +110,7 @@ export default function ExerciseCard({
                   className={`px-4 py-2 rounded-xl text-sm font-semibold border transition-colors ${
                     savedSets[i]
                       ? 'bg-[#4CAF50] border-[#4CAF50] text-white'
-                      : 'bg-white border-gray-300 text-gray-700 hover:border-gray-400'
+                      : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-gray-400 dark:hover:border-gray-500'
                   }`}
                 >
                   {savedSets[i] ? `✓ Set ${i + 1}` : `Set ${i + 1}`}
@@ -130,11 +130,11 @@ export default function ExerciseCard({
                       const v = parseInt(e.target.value)
                       if (!isNaN(v)) onRepsChange(i, v)
                     }}
-                    className="w-12 text-center text-sm border border-gray-200 rounded-lg py-1 focus:outline-none focus:border-blue-400"
+                    className="w-12 text-center text-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg py-1 focus:outline-none focus:border-blue-400"
                     min="0"
                     max="999"
                   />
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-gray-400 dark:text-gray-500">
                     {exercise.timed ? 'sec' : 'reps'}
                   </span>
                 </div>

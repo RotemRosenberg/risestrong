@@ -18,8 +18,20 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#4CAF50",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#4CAF50" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
+
+// Applied before hydration to prevent a flash of the wrong theme.
+const themeScript = `
+try {
+  var t = localStorage.getItem('theme') || 'system';
+  var dark = t === 'dark' || (t === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+  if (dark) document.documentElement.classList.add('dark');
+} catch (e) {}
+`;
 
 export default function RootLayout({
   children,
@@ -27,8 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geist.className}>
-      <body className="min-h-screen bg-gray-50 pb-[calc(env(safe-area-inset-bottom)+4rem)]">
+    <html lang="en" className={geist.className} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-screen bg-gray-50 dark:bg-gray-950 pb-[calc(env(safe-area-inset-bottom)+4rem)]">
         {children}
         <BottomNav />
       </body>

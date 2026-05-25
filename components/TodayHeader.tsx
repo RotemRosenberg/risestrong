@@ -28,7 +28,7 @@ export default function TodayHeader({ userName, weekNumber, phase, today }: Prop
   return (
     <div className="space-y-1 pt-1">
       <div className="flex items-center justify-between gap-2">
-        <h1 className="text-xl font-bold text-gray-900 leading-tight">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
           {greeting}, {userName} 👋
         </h1>
         <span
@@ -37,7 +37,7 @@ export default function TodayHeader({ userName, weekNumber, phase, today }: Prop
           Week {weekNumber} · Phase {phase}
         </span>
       </div>
-      <p className="text-sm text-gray-500">{dateStr}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400">{dateStr}</p>
     </div>
   )
 }

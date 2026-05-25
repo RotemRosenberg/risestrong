@@ -273,13 +273,13 @@ export default function TodayPage() {
             <div className="space-y-3">
               {/* Progress bar */}
               <div>
-                <div className="flex justify-between text-sm text-gray-600 mb-1.5">
+                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-1.5">
                   <span className="font-semibold">Exercises</span>
                   <span>
                     {completedExercises} / {workout.exercises.length} done
                   </span>
                 </div>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-[#4CAF50] rounded-full transition-all duration-500"
                     style={{
@@ -395,18 +395,18 @@ function Collapsible({
   children: React.ReactNode
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between px-4 py-3 text-left"
       >
-        <span className="font-semibold text-gray-800">{title}</span>
+        <span className="font-semibold text-gray-800 dark:text-gray-200">{title}</span>
         <ChevronDown
           size={18}
-          className={`text-gray-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`text-gray-400 dark:text-gray-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
         />
       </button>
-      {open && <div className="px-4 pb-4 space-y-2 border-t border-gray-100">{children}</div>}
+      {open && <div className="px-4 pb-4 space-y-2 border-t border-gray-100 dark:border-gray-700">{children}</div>}
     </div>
   )
 }
@@ -425,8 +425,8 @@ function MarkAllRow({
         onClick={onToggleAll}
         className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-colors ${
           allDone
-            ? 'text-gray-500 bg-gray-100 hover:bg-gray-200 active:bg-gray-300'
-            : 'text-[#4CAF50] bg-green-50 hover:bg-green-100 active:bg-green-200'
+            ? 'text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 active:bg-gray-300'
+            : 'text-[#4CAF50] bg-green-50 dark:bg-green-950/40 hover:bg-green-100 dark:hover:bg-green-900/40 active:bg-green-200'
         }`}
       >
         {allDone ? 'Clear all' : '✓ Mark all done'}
@@ -453,16 +453,16 @@ function CheckItem({
     >
       <div
         className={`mt-0.5 shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-          checked ? 'bg-[#4CAF50] border-[#4CAF50]' : 'border-gray-300'
+          checked ? 'bg-[#4CAF50] border-[#4CAF50]' : 'border-gray-300 dark:border-gray-600'
         }`}
       >
         {checked && <span className="text-white text-xs">✓</span>}
       </div>
       <div>
-        <p className={`text-sm font-medium ${checked ? 'text-gray-400 line-through' : 'text-gray-800'}`}>
+        <p className={`text-sm font-medium ${checked ? 'text-gray-400 dark:text-gray-500 line-through' : 'text-gray-800 dark:text-gray-200'}`}>
           {label}
         </p>
-        <p className="text-xs text-gray-400 mt-0.5">{meta}</p>
+        <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{meta}</p>
       </div>
     </button>
   )
@@ -473,14 +473,14 @@ function LoadingSkeleton() {
     <main className="max-w-lg mx-auto px-4 pt-5 pb-8 space-y-4">
       <div className="animate-pulse space-y-2">
         <div className="flex items-center justify-between">
-          <div className="h-6 bg-gray-200 rounded-lg w-52" />
-          <div className="h-6 bg-gray-200 rounded-full w-28" />
+          <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded-lg w-52" />
+          <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded-full w-28" />
         </div>
-        <div className="h-4 bg-gray-200 rounded-lg w-36" />
+        <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded-lg w-36" />
       </div>
-      <div className="animate-pulse bg-gray-200 rounded-2xl h-32" />
-      <div className="animate-pulse bg-gray-200 rounded-2xl h-28" />
-      <div className="animate-pulse bg-gray-200 rounded-2xl h-36" />
+      <div className="animate-pulse bg-gray-200 dark:bg-gray-800 rounded-2xl h-32" />
+      <div className="animate-pulse bg-gray-200 dark:bg-gray-800 rounded-2xl h-28" />
+      <div className="animate-pulse bg-gray-200 dark:bg-gray-800 rounded-2xl h-36" />
     </main>
   )
 }
@@ -507,27 +507,27 @@ function NotStartedCard({
   return (
     <div className="space-y-4 pt-1">
       <div className="space-y-1">
-        <h1 className="text-xl font-bold text-gray-900">{greeting}, {userName} 👋</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">{greeting}, {userName} 👋</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           {today.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' })}
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col items-center text-center gap-4">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6 flex flex-col items-center text-center gap-4">
         <div className="text-5xl">🚀</div>
         <div>
-          <p className="text-lg font-bold text-gray-900">Program starts in</p>
+          <p className="text-lg font-bold text-gray-900 dark:text-gray-100">Program starts in</p>
           <p className="text-5xl font-extrabold text-[#4CAF50] mt-1">
             {daysUntilStart} {daysUntilStart === 1 ? 'day' : 'days'}
           </p>
         </div>
-        <div className="bg-gray-50 rounded-xl px-4 py-3 w-full">
-          <p className="text-sm text-gray-500">First training day</p>
-          <p className="text-base font-semibold text-gray-800 mt-0.5">{startLabel}</p>
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-xl px-4 py-3 w-full">
+          <p className="text-sm text-gray-500 dark:text-gray-400">First training day</p>
+          <p className="text-base font-semibold text-gray-800 dark:text-gray-200 mt-0.5">{startLabel}</p>
         </div>
-        <p className="text-sm text-gray-400 leading-relaxed">
+        <p className="text-sm text-gray-400 dark:text-gray-500 leading-relaxed">
           Rest up — your 12-week calisthenics program begins soon.
-          Make sure you've set your start date in Settings.
+          Make sure you&apos;ve set your start date in Settings.
         </p>
       </div>
     </div>
