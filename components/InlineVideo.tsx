@@ -32,7 +32,7 @@ export default function InlineVideo({ youtubeUrl, fallback = null, className = '
   const embed = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=1&rel=0&playsinline=1&modestbranding=1`
 
   return (
-    <div className={`relative overflow-hidden rounded-xl bg-gray-200 aspect-video ${className}`}>
+    <div className={`relative overflow-hidden rounded-xl bg-gray-200 dark:bg-gray-900 aspect-video ${className}`}>
       {activated ? (
         <iframe
           src={embed}

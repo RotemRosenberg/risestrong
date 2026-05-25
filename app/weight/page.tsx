@@ -183,17 +183,17 @@ export default function WeightPage() {
         </div>
       )}
 
-      <h1 className="text-2xl font-bold text-gray-900">Weight</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Weight</h1>
 
       {/* Explanation */}
-      <div className="bg-white rounded-2xl shadow-sm p-4 text-sm text-gray-600 leading-relaxed">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
         📋 Weigh yourself every Sunday morning before eating and after waking up.
         This gives the most accurate and consistent readings over time.
       </div>
 
       {/* Quick entry */}
-      <div className="bg-white rounded-2xl shadow-sm p-4 space-y-3">
-        <h2 className="font-bold text-gray-800">Log Weight</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 space-y-3">
+        <h2 className="font-bold text-gray-800 dark:text-gray-200">Log Weight</h2>
         <div className="flex flex-col items-center gap-1">
           <input
             type="number"
@@ -204,10 +204,10 @@ export default function WeightPage() {
             value={inputKg}
             onChange={e => setInputKg(e.target.value)}
             placeholder="84.5"
-            className="w-36 text-center text-5xl font-bold text-gray-900 border-0 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none pb-1 bg-transparent"
+            className="w-36 text-center text-5xl font-bold text-gray-900 dark:text-gray-100 border-0 border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-500 focus:outline-none pb-1 bg-transparent"
           />
-          <span className="text-sm text-gray-400">kg</span>
-          <span className="text-xs text-gray-400 mt-1">{friendlyDate(todayISO)}</span>
+          <span className="text-sm text-gray-400 dark:text-gray-500">kg</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500 mt-1">{friendlyDate(todayISO)}</span>
         </div>
         <button
           onClick={handleSave}
@@ -254,8 +254,8 @@ export default function WeightPage() {
 
       {/* Chart */}
       {entries.length >= 2 && (
-        <div className="bg-white rounded-2xl shadow-sm p-4">
-          <h2 className="font-bold text-gray-800 mb-3">Progress</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4">
+          <h2 className="font-bold text-gray-800 dark:text-gray-200 mb-3">Progress</h2>
           <div className="overflow-x-auto -mx-1 px-1">
             <div style={{ width: chartWidth, height: 240 }}>
               <BarChart
@@ -265,7 +265,7 @@ export default function WeightPage() {
                 margin={{ top: 24, right: 12, left: -16, bottom: 8 }}
                 barCategoryGap="30%"
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgb(229 231 235 / 0.5)" vertical={false} className="dark:stroke-gray-700/40" />
                 <XAxis
                   dataKey="label"
                   tick={XTick}
@@ -283,7 +283,7 @@ export default function WeightPage() {
                 />
                 <Tooltip
                   formatter={(v) => [`${v} kg`, 'Weight']}
-                  contentStyle={{ borderRadius: 12, fontSize: 13 }}
+                  contentStyle={{ borderRadius: 12, fontSize: 13, border: 'none', backgroundColor: 'rgb(31 41 55)', color: '#fff' }}
                 />
                 <Bar dataKey="weight" radius={[4, 4, 0, 0]} maxBarSize={40}>
                   {chartData.map((d, i) => (
@@ -292,7 +292,7 @@ export default function WeightPage() {
                   <LabelList
                     dataKey="weight"
                     position="top"
-                    style={{ fontSize: 11, fill: '#374151', fontWeight: 600 }}
+                    style={{ fontSize: 11, fill: '#9ca3af', fontWeight: 600 }}
                     formatter={(v) => (typeof v === 'number' ? v.toFixed(1) : '')}
                   />
                 </Bar>
@@ -303,22 +303,22 @@ export default function WeightPage() {
       )}
 
       {/* History list */}
-      <div className="bg-white rounded-2xl shadow-sm p-4">
-        <h2 className="font-bold text-gray-800 mb-3">History</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4">
+        <h2 className="font-bold text-gray-800 dark:text-gray-200 mb-3">History</h2>
 
         {entries.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-4">
+          <p className="text-sm text-gray-400 dark:text-gray-500 text-center py-4">
             No weight entries yet. Start by logging your weight above.
           </p>
         ) : (
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-gray-100 dark:divide-gray-700">
             {[...entries].reverse().map((entry, i, arr) => {
               const nextEntry = arr[i + 1] // "next" in reversed = previous in time
               const delta = nextEntry ? entry.weight_kg - nextEntry.weight_kg : null
               return (
                 <div key={entry.date} className="flex items-center justify-between py-2.5">
                   <div>
-                    <p className="text-sm font-semibold text-gray-800">
+                    <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
                       {friendlyDate(entry.date)}
                     </p>
                     {delta !== null && (
@@ -327,9 +327,9 @@ export default function WeightPage() {
                       </p>
                     )}
                   </div>
-                  <span className="text-lg font-bold text-gray-900">
+                  <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
                     {entry.weight_kg.toFixed(1)}{' '}
-                    <span className="text-sm font-normal text-gray-400">kg</span>
+                    <span className="text-sm font-normal text-gray-400 dark:text-gray-500">kg</span>
                   </span>
                 </div>
               )
@@ -353,12 +353,12 @@ function SummaryCard({
   fallback: string
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-3 text-center">
-      <p className="text-xs text-gray-400 leading-tight mb-1">{label}</p>
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-3 text-center">
+      <p className="text-xs text-gray-400 dark:text-gray-500 leading-tight mb-1">{label}</p>
       {value ? (
         <p className={`text-base ${value.cls}`}>{value.text}</p>
       ) : (
-        <p className="text-base text-gray-400">{fallback}</p>
+        <p className="text-base text-gray-400 dark:text-gray-500">{fallback}</p>
       )}
     </div>
   )
@@ -367,13 +367,13 @@ function SummaryCard({
 function Skeleton() {
   return (
     <div className="max-w-lg mx-auto px-4 pt-5 pb-8 space-y-4">
-      <div className="h-7 w-24 bg-gray-200 rounded-lg animate-pulse" />
-      <div className="h-20 bg-gray-200 rounded-2xl animate-pulse" />
-      <div className="h-44 bg-gray-200 rounded-2xl animate-pulse" />
+      <div className="h-7 w-24 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
+      <div className="h-20 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+      <div className="h-44 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
       <div className="grid grid-cols-3 gap-2">
-        {[0, 1, 2].map(i => <div key={i} className="h-16 bg-gray-200 rounded-2xl animate-pulse" />)}
+        {[0, 1, 2].map(i => <div key={i} className="h-16 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />)}
       </div>
-      <div className="h-64 bg-gray-200 rounded-2xl animate-pulse" />
+      <div className="h-64 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
     </div>
   )
 }

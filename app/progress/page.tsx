@@ -137,7 +137,7 @@ export default function ProgressPage() {
         </div>
       )}
 
-      <h1 className="text-2xl font-bold text-gray-900">Progress</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Progress</h1>
 
       {/* ── Stat cards ── */}
       <div className="grid grid-cols-2 gap-3">
@@ -161,14 +161,14 @@ export default function ProgressPage() {
       </div>
 
       {/* ── Tabbed charts ── */}
-      <div className="bg-white rounded-2xl shadow-sm p-4">
-        <div className="flex gap-1 mb-4 bg-gray-100 rounded-xl p-1">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4">
+        <div className="flex gap-1 mb-4 bg-gray-100 dark:bg-gray-900 rounded-xl p-1">
           {([['weight','Weight'],['pushups','Push-ups'],['pullups','Pull-ups'],['deathang','Dead Hang']] as [TabKey, string][]).map(([key, label]) => (
             <button
               key={key}
               onClick={() => setActiveTab(key)}
               className={`flex-1 text-xs font-semibold py-1.5 rounded-lg transition-colors ${
-                activeTab === key ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500'
+                activeTab === key ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm' : 'text-gray-500 dark:text-gray-400'
               }`}
             >
               {label}
@@ -183,29 +183,29 @@ export default function ProgressPage() {
       </div>
 
       {/* ── Streak ── */}
-      <div className="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-3">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 flex items-center gap-3">
         <span className="text-3xl">{streak > 0 ? '🔥' : '💤'}</span>
         <div>
           {streak > 0 ? (
             <>
-              <p className="font-bold text-gray-900 text-lg">{streak}-day streak!</p>
-              <p className="text-xs text-gray-400">Keep it up — don't break the chain</p>
+              <p className="font-bold text-gray-900 dark:text-gray-100 text-lg">{streak}-day streak!</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500">Keep it up — don&apos;t break the chain</p>
             </>
           ) : (
             <>
-              <p className="font-bold text-gray-700">No active streak</p>
-              <p className="text-xs text-gray-400">Start today!</p>
+              <p className="font-bold text-gray-700 dark:text-gray-300">No active streak</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500">Start today!</p>
             </>
           )}
         </div>
       </div>
 
       {/* ── 12-week calendar ── */}
-      <div className="bg-white rounded-2xl shadow-sm p-4">
-        <h2 className="font-bold text-gray-800 mb-3">12-Week Overview</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4">
+        <h2 className="font-bold text-gray-800 dark:text-gray-200 mb-3">12-Week Overview</h2>
 
         {!startDate ? (
-          <p className="text-sm text-gray-400 text-center py-4">
+          <p className="text-sm text-gray-400 dark:text-gray-500 text-center py-4">
             Set your program start date in Settings to see the calendar.
           </p>
         ) : (
@@ -220,9 +220,9 @@ export default function ProgressPage() {
       {/* ── Log weekly numbers ── */}
       <button
         onClick={() => setShowModal(true)}
-        className="w-full py-3 rounded-2xl border-2 border-[#4CAF50] text-[#4CAF50] font-bold text-base hover:bg-green-50 transition-colors"
+        className="w-full py-3 rounded-2xl border-2 border-[#4CAF50] text-[#4CAF50] font-bold text-base hover:bg-green-50 dark:hover:bg-green-950/30 transition-colors"
       >
-        📝 Log This Week's Numbers
+        📝 Log This Week&apos;s Numbers
       </button>
 
       {/* ── Modal ── */}
@@ -242,20 +242,20 @@ export default function ProgressPage() {
 // ─── StatCard ─────────────────────────────────────────────────────────────────
 
 function StatCard({
-  icon, label, value, valueClass = 'text-gray-900',
+  icon, label, value, valueClass = 'text-gray-900 dark:text-gray-100',
 }: {
   icon: string; label: string; value: string | null; valueClass?: string
 }) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-4">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4">
       <p className="text-xl mb-1">{icon}</p>
-      <p className="text-xs text-gray-400 mb-0.5">{label}</p>
+      <p className="text-xs text-gray-400 dark:text-gray-500 mb-0.5">{label}</p>
       {value ? (
         <p className={`text-xl font-bold ${valueClass}`}>{value}</p>
       ) : (
         <>
-          <p className="text-xl font-bold text-gray-300">—</p>
-          <p className="text-xs text-gray-300">Not logged yet</p>
+          <p className="text-xl font-bold text-gray-300 dark:text-gray-600">—</p>
+          <p className="text-xs text-gray-300 dark:text-gray-600">Not logged yet</p>
         </>
       )}
     </div>
@@ -273,7 +273,7 @@ function ProgressChart({
 }) {
   if (data.length === 0) {
     return (
-      <p className="text-sm text-gray-400 text-center py-6">{emptyMsg}</p>
+      <p className="text-sm text-gray-400 dark:text-gray-500 text-center py-6">{emptyMsg}</p>
     )
   }
 
@@ -297,12 +297,12 @@ function ProgressChart({
     <div className="overflow-x-auto -mx-1 px-1">
       <div style={{ width: w, height: 200 }}>
         <BarChart width={w} height={200} data={data} margin={{ top: 20, right: 8, left: -20, bottom: 4 }} barCategoryGap="30%">
-          <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgb(229 231 235 / 0.5)" vertical={false} className="dark:stroke-gray-700/40" />
           <XAxis dataKey="label" tick={XTick} height={30} axisLine={false} tickLine={false} />
           <YAxis domain={domain} tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} tickFormatter={v => `${v}`} width={32} />
           <Tooltip
             formatter={v => [`${v} ${yLabel}`, '']}
-            contentStyle={{ borderRadius: 12, fontSize: 13 }}
+            contentStyle={{ borderRadius: 12, fontSize: 13, border: 'none', backgroundColor: 'rgb(31 41 55)', color: '#fff' }}
           />
           <Bar dataKey="value" fill="#4CAF50" radius={[4, 4, 0, 0]} maxBarSize={40}>
             <LabelList
@@ -341,10 +341,10 @@ function getCellState(
 const CELL_CLASSES: Record<CellState, string> = {
   completed: 'bg-[#4CAF50]',
   partial:   'bg-yellow-400',
-  rest:      'bg-gray-200',
-  missed:    'border-2 border-gray-300 bg-white',
-  future:    'bg-gray-100',
-  today:     'ring-2 ring-blue-400 bg-gray-100',
+  rest:      'bg-gray-200 dark:bg-gray-700',
+  missed:    'border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-transparent',
+  future:    'bg-gray-100 dark:bg-gray-800',
+  today:     'ring-2 ring-blue-400 bg-gray-100 dark:bg-gray-800',
 }
 
 function CalendarGrid({
@@ -365,14 +365,14 @@ function CalendarGrid({
       <div className="flex items-center gap-1.5 mb-1">
         <span className="w-7 shrink-0" />
         {headers.map((l, i) => (
-          <span key={i} className="w-6 text-center text-xs text-gray-400 shrink-0">{l}</span>
+          <span key={i} className="w-6 text-center text-xs text-gray-400 dark:text-gray-500 shrink-0">{l}</span>
         ))}
       </div>
 
       {/* 12 weeks */}
       {Array.from({ length: 12 }, (_, wi) => (
         <div key={wi} className="flex items-center gap-1.5">
-          <span className="w-7 text-right text-xs text-gray-400 shrink-0">W{wi + 1}</span>
+          <span className="w-7 text-right text-xs text-gray-400 dark:text-gray-500 shrink-0">W{wi + 1}</span>
           {Array.from({ length: 7 }, (_, di) => {
             const d = new Date(startDate)
             d.setDate(d.getDate() + wi * 7 + di)
@@ -398,13 +398,13 @@ function CalendarGrid({
         {([
           ['bg-[#4CAF50]', 'Done'],
           ['bg-yellow-400', 'Partial'],
-          ['bg-gray-200', 'Rest'],
-          ['border-2 border-gray-300 bg-white', 'Missed'],
-          ['bg-gray-100', 'Future'],
+          ['bg-gray-200 dark:bg-gray-700', 'Rest'],
+          ['border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-transparent', 'Missed'],
+          ['bg-gray-100 dark:bg-gray-800', 'Future'],
         ] as [string, string][]).map(([cls, lbl]) => (
           <div key={lbl} className="flex items-center gap-1">
             <div className={`w-3 h-3 rounded-full ${cls}`} />
-            <span className="text-xs text-gray-400">{lbl}</span>
+            <span className="text-xs text-gray-400 dark:text-gray-500">{lbl}</span>
           </div>
         ))}
       </div>
@@ -460,10 +460,10 @@ function MetricsModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 px-4 pb-6 sm:pb-0">
-      <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl space-y-4">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-sm shadow-2xl space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-bold text-gray-900 text-lg">Week {weekNumber} Numbers</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl w-8 h-8 flex items-center justify-center">✕</button>
+          <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg">Week {weekNumber} Numbers</h3>
+          <button onClick={onClose} className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 text-xl w-8 h-8 flex items-center justify-center">✕</button>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -474,17 +474,17 @@ function MetricsModal({
             ['Plank hold',   plank,    setPlank,    'sec'],
           ] as [string, string, (v: string) => void, string][]).map(([label, val, setter, unit]) => (
             <div key={label} className="space-y-1">
-              <label className="text-xs font-medium text-gray-600">{label}</label>
-              <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden">
+              <label className="text-xs font-medium text-gray-600 dark:text-gray-400">{label}</label>
+              <div className="flex items-center border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-xl overflow-hidden">
                 <input
                   type="number"
                   inputMode="numeric"
                   value={val}
                   onChange={e => setter(e.target.value)}
                   placeholder="—"
-                  className="flex-1 px-3 py-2 text-sm focus:outline-none w-0"
+                  className="flex-1 px-3 py-2 text-sm focus:outline-none w-0 bg-transparent text-gray-900 dark:text-gray-100"
                 />
-                <span className="text-xs text-gray-400 pr-2 shrink-0">{unit}</span>
+                <span className="text-xs text-gray-400 dark:text-gray-500 pr-2 shrink-0">{unit}</span>
               </div>
             </div>
           ))}
@@ -507,13 +507,13 @@ function MetricsModal({
 function Skeleton() {
   return (
     <div className="max-w-lg mx-auto px-4 pt-5 pb-8 space-y-4">
-      <div className="h-7 w-28 bg-gray-200 rounded-lg animate-pulse" />
+      <div className="h-7 w-28 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
       <div className="grid grid-cols-2 gap-3">
-        {[0,1,2,3].map(i => <div key={i} className="h-24 bg-gray-200 rounded-2xl animate-pulse" />)}
+        {[0,1,2,3].map(i => <div key={i} className="h-24 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />)}
       </div>
-      <div className="h-56 bg-gray-200 rounded-2xl animate-pulse" />
-      <div className="h-16 bg-gray-200 rounded-2xl animate-pulse" />
-      <div className="h-72 bg-gray-200 rounded-2xl animate-pulse" />
+      <div className="h-56 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+      <div className="h-16 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
+      <div className="h-72 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse" />
     </div>
   )
 }

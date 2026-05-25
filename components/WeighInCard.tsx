@@ -59,18 +59,18 @@ export default function WeighInCard({ today }: Props) {
   // Saved state
   if (savedKg !== null && !editing) {
     return (
-      <div className="bg-white rounded-2xl shadow-sm p-4 border-l-4 border-green-400 flex items-center justify-between">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 border-l-4 border-green-400 flex items-center justify-between">
         <div>
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-0.5">
+          <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-0.5">
             Weekly Weigh-in
           </p>
-          <p className="text-lg font-bold text-gray-900">
+          <p className="text-lg font-bold text-gray-900 dark:text-gray-100">
             ✓&nbsp;{savedKg} kg logged today
           </p>
         </div>
         <button
           onClick={() => { setEditing(true); setInput(String(savedKg)) }}
-          className="text-sm text-gray-400 underline hover:text-gray-600"
+          className="text-sm text-gray-400 dark:text-gray-500 underline hover:text-gray-600 dark:hover:text-gray-300"
         >
           Edit
         </button>
@@ -80,15 +80,15 @@ export default function WeighInCard({ today }: Props) {
 
   // Entry state
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-4 border-l-4 border-green-400">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-4 border-l-4 border-green-400">
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h2 className="text-lg font-bold text-gray-900">Weekly Weigh-in 🏋️</h2>
-          <p className="text-xs text-gray-500 mt-0.5">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Weekly Weigh-in 🏋️</h2>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
             Before eating, after waking up — most accurate reading
           </p>
         </div>
-        <span className="bg-green-100 text-green-700 text-xs font-semibold px-2.5 py-0.5 rounded-full shrink-0 ml-2">
+        <span className="bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded-full shrink-0 ml-2">
           Required
         </span>
       </div>
@@ -103,9 +103,9 @@ export default function WeighInCard({ today }: Props) {
           value={input}
           onChange={e => { setInput(e.target.value); setValidationErr('') }}
           placeholder="84.5"
-          className="w-40 text-center text-5xl font-bold text-gray-900 border-0 border-b-2 border-gray-200 focus:border-green-500 focus:outline-none pb-1 bg-transparent"
+          className="w-40 text-center text-5xl font-bold text-gray-900 dark:text-gray-100 border-0 border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-500 focus:outline-none pb-1 bg-transparent"
         />
-        <span className="text-sm text-gray-400 mt-1">kg</span>
+        <span className="text-sm text-gray-400 dark:text-gray-500 mt-1">kg</span>
       </div>
 
       {validationErr && (

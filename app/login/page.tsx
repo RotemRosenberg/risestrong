@@ -30,14 +30,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-sm bg-white rounded-2xl shadow p-8">
-        <h1 className="text-2xl font-bold text-center mb-2">RiseStrong 💪</h1>
-        <p className="text-center text-gray-500 text-sm mb-8">Sign in to continue</p>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center px-4">
+      <div className="w-full max-w-sm bg-white dark:bg-gray-800 rounded-2xl shadow p-8">
+        <h1 className="text-2xl font-bold text-center mb-2 text-gray-900 dark:text-gray-100">RiseStrong 💪</h1>
+        <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-8">Sign in to continue</p>
 
         <form onSubmit={handleSignIn} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Email
             </label>
             <input
@@ -46,13 +46,13 @@ export default function LoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Password
             </label>
             <input
@@ -61,13 +61,13 @@ export default function LoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
               placeholder="••••••••"
             />
           </div>
 
           {error && (
-            <p className="text-red-600 text-sm text-center">{error}</p>
+            <p className="text-red-600 dark:text-red-400 text-sm text-center">{error}</p>
           )}
 
           <button
