@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Play, RotateCcw } from 'lucide-react'
+import { Play, RotateCcw, BarChart3 } from 'lucide-react'
 import type { Exercise, WorkoutExercise } from '@/lib/program'
 import InlineVideo from './InlineVideo'
 import TimerOverlay from './TimerOverlay'
+import ExerciseHistoryModal from './ExerciseHistoryModal'
 import { unlockAudio } from '@/lib/soundEffect'
 
 interface Props {
@@ -25,6 +26,7 @@ export default function ExerciseCard({
   onRepsChange,
 }: Props) {
   const [showTimer, setShowTimer] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
 
   const completedCount = savedSets.filter(Boolean).length
   const allDone = completedCount === workoutExercise.sets
@@ -62,7 +64,14 @@ export default function ExerciseCard({
         <div className="p-4 space-y-3">
           {/* Header */}
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-bold text-gray-900 dark:text-gray-100 leading-tight">{exercise.name}</h3>
+            <button
+              onClick={() => setShowHistory(true)}
+              className="flex items-center gap-1.5 -m-1 p-1 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 active:bg-gray-100 dark:active:bg-gray-700 transition-colors text-left"
+              aria-label={`Show ${exercise.name} history`}
+            >
+              <h3 className="font-bold text-gray-900 dark:text-gray-100 leading-tight">{exercise.name}</h3>
+              <BarChart3 size={14} className="text-gray-400 dark:text-gray-500 shrink-0" />
+            </button>
             <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0 pt-0.5">Target: {targetLabel}</span>
           </div>
 
@@ -151,6 +160,14 @@ export default function ExerciseCard({
           workSec={workoutExercise.reps}
           onSetComplete={handleOverlaySetComplete}
           onClose={() => setShowTimer(false)}
+        />
+      )}
+
+      {showHistory && (
+        <ExerciseHistoryModal
+          exerciseId={workoutExercise.exerciseId}
+          exercise={exercise}
+          onClose={() => setShowHistory(false)}
         />
       )}
     </>
