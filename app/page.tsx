@@ -6,9 +6,8 @@ import { ChevronDown } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { getDayInfo, progressedTarget, toISODate, type DayInfo } from '@/lib/schedule'
 import { EXERCISES, WARMUP, COOLDOWN } from '@/lib/program'
-import TodayHeader from '@/components/TodayHeader'
+import TodayHero from '@/components/TodayHero'
 import WeighInCard from '@/components/WeighInCard'
-import DayTypeCard from '@/components/DayTypeCard'
 import ExerciseCard from '@/components/ExerciseCard'
 import RestTimer from '@/components/RestTimer'
 
@@ -256,39 +255,18 @@ export default function TodayPage() {
             />
           ) : (
             <>
-          <TodayHeader
+          <TodayHero
             userName={config.user_name}
-            weekNumber={dayInfo.weekNumber}
-            phase={dayInfo.phase}
-            phaseData={dayInfo.phaseData}
+            dayInfo={dayInfo}
+            workoutProgress={workout ? (completedExercises / workout.exercises.length) * 100 : 0}
             today={today}
           />
 
           {dayInfo.isWeighInDay && <WeighInCard today={today} />}
 
-          <DayTypeCard dayInfo={dayInfo} />
-
           {/* Exercise list — only on strength days */}
           {workout && (
             <div className="space-y-3">
-              {/* Progress bar */}
-              <div>
-                <div className="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-1.5">
-                  <span className="font-semibold">Exercises</span>
-                  <span>
-                    {completedExercises} / {workout.exercises.length} done
-                  </span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[#4CAF50] rounded-full transition-all duration-500"
-                    style={{
-                      width: `${(completedExercises / workout.exercises.length) * 100}%`,
-                    }}
-                  />
-                </div>
-              </div>
-
               {/* Warm-up */}
               <Collapsible
                 title="🔥 Warm-up"
